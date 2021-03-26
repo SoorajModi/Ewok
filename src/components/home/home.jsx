@@ -1,6 +1,6 @@
 import React from "react";
-import List from './List'
-import FallBack from "./FallBack";
+import List from './list'
+import FallBack from "../FallBack";
 
 const swapiURL = "https://swapi.dev/api/people/";
 const fetchData = () => fetch(swapiURL).then(res => res.json());

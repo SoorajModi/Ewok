@@ -1,5 +1,5 @@
 import React from "react";
-import HomeTable from "./HomeTable";
+import HomeTable from "./homeTable";
 
 function List({ items, fallback }) {
     if (!items || items.length === 0) {
