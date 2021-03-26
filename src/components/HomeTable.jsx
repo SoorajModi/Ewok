@@ -18,8 +18,8 @@ const columns = [
     {id: 'mass', label: 'Mass', minWidth: 170, align: 'center'},
 ];
 
-function createData(name, year, height, mass) {
-    return {name, year, height, mass};
+function createData(name, year, height, mass, num) {
+    return {name, year, height, mass, num};
 }
 
 const useStyles = makeStyles({
@@ -27,13 +27,14 @@ const useStyles = makeStyles({
         width: '100%',
     },
     container: {
-        maxHeight: 440,
+        maxHeight: 600,
     },
 });
 
 function mapItems(items) {
+    let num = 1;
     return items.data.map(item => {
-        return createData(item.name, item.birth_year, item.height, item.mass)
+        return createData(item.name, item.birth_year, item.height, item.mass, num++)
     });
 }
 
@@ -78,7 +79,9 @@ function HomeTable(data) {
                                         const value = row[column.id];
                                         return (
                                             <TableCell key={uniqid()} align={column.align}>
+                                                <a href={'/character/' + row.num}>
                                                 {column.format && typeof value === 'number' ? column.format(value) : value}
+                                                </a>
                                             </TableCell>
                                         );
                                     })}

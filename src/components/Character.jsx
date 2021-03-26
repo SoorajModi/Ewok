@@ -1,5 +1,8 @@
 import React from "react";
 import FallBack from "./FallBack";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import Link from "@material-ui/core/Link";
+import Typography from "@material-ui/core/Typography";
 
 let swapiURL = "https://swapi.dev/api/people/";
 
@@ -24,6 +27,14 @@ function CharContents({char}) {
     )
 }
 
+function RenderBreadcrumb({items}) {
+    if (!items || items.length === 0) {
+        return <Typography color="textPrimary">Character</Typography>;
+    } else {
+        return <Typography color="textPrimary">{items.name}</Typography>;
+    }
+}
+
 function RenderCharContents({items, fallback}) {
     if (!items || items.length === 0) {
         return fallback;
@@ -44,6 +55,12 @@ function Character(props) {
 
     return (
         <>
+            <Breadcrumbs aria-label="breadcrumb">
+                <Link color="inherit" href="/">
+                    Home
+                </Link>
+                <RenderBreadcrumb items={charData}/>
+            </Breadcrumbs>
             <h1>Character</h1>
             <RenderCharContents items={charData} fallback={<FallBack/>}/>
         </>
