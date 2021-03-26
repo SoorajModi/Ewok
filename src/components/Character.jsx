@@ -61,7 +61,6 @@ function Character(props) {
                 </Link>
                 <RenderBreadcrumb items={charData}/>
             </Breadcrumbs>
-            <h1>Character</h1>
             <RenderCharContents items={charData} fallback={<FallBack/>}/>
         </>
     )

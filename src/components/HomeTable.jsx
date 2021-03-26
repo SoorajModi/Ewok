@@ -79,8 +79,9 @@ function HomeTable(data) {
                                         const value = row[column.id];
                                         return (
                                             <TableCell key={uniqid()} align={column.align}>
-                                                <a href={'/character/' + row.num}>
-                                                {column.format && typeof value === 'number' ? column.format(value) : value}
+                                                <a href={'/character/' + row.num}
+                                                   style={{color: "black", textDecoration: "none"}}>
+                                                    {column.format && typeof value === 'number' ? column.format(value) : value}
                                                 </a>
                                             </TableCell>
                                         );
