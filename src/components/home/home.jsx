@@ -8,7 +8,7 @@ const fetchData = () => {
     const apiPromises = [];
     const pagesRequired = 9;
 
-    for (let i = 1; i < pagesRequired; i++) {
+    for (let i = 1; i <= pagesRequired; i++) {
         apiPromises.push(fetch(swapiURL + "?page=" + i));
     }
 
