@@ -1,5 +1,5 @@
 import React from "react";
-import FallBack from "../FallBack";
+import FallBack from "../fallBack";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
@@ -15,7 +15,7 @@ const fetchData = (id) => {
 function CharContents({char}) {
     return (
         <>
-            <p>Name: {char.name}</p>
+            <h2>{char.name}</h2>
             <p>Gender: {char.gender}</p>
             <p>Birth Year: {char.birth_year}</p>
             <p>Birth Year: {char.birth_year}</p>
@@ -55,7 +55,7 @@ function Character(props) {
 
     return (
         <>
-            <Breadcrumbs aria-label="breadcrumb">
+            <Breadcrumbs aria-label="breadcrumb"  style={{paddingTop: "5vh", position: "center"}}>
                 <Link color="inherit" href="/">
                     Home
                 </Link>

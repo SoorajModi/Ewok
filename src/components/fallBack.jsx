@@ -5,7 +5,6 @@ function FallBack() {
     return (
         <>
             <CircularProgress />
-            {/*<img src={'/hellothere.jpeg'} alt={'hello there'}/>*/}
         </>
     )
 }

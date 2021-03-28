@@ -10,9 +10,9 @@ import './App.css';
 
 function App() {
     return (
-        <div className="App">
-            <NavBar/>
-            <header className="App-header">
+        <div className="App" style={{position: "relative", minHeight: "100vh"}}>
+            <NavBar style={{postion: "absolute"}}/>
+            <header className="App-header" style={{minHeight: "50vh"}}>
                 <Router basename={process.env.PUBLIC_URL}>
                     <Switch>
                         <Route path={"/character/:id"} render={(props) => <Character {...props}/>}/>
