@@ -3,64 +3,27 @@ import List from './list'
 import FallBack from "../fallBack";
 
 const swapiURL = "https://swapi.dev/api/people/";
-const fetchData = () => fetch(swapiURL, {
-    method: "GET"
-}).then(res => res.json());
 
-// const fetchData = () => fetch(swapiURL, {
-//     method: "GET"
-// }).then(res => {
-//     res = res.json();
-//     console.log(res);
-//     const apiPromises = [];
-//     const pagesRequired = 9;
-//
-//     for (let i = pagesRequired; i > 0; i--) {
-//         apiPromises.push(fetch(swapiURL + "?page=" + i ));
-//     }
-//
-//     return Promise.all(apiPromises)
-//         .then(responses => {
-//             const processedResponses = [];
-//             responses.map(response => {
-//                 // console.log(response);
-//                 return processedResponses.push(response);
-//             });
-//             return processedResponses;
-//         });
-// });
+const fetchData = () => {
+    const apiPromises = [];
+    const pagesRequired = 9;
 
-// const fetchAllData = () => {
-//     const apiPromises = [];
-//     const pagesRequired = 9;
-//
-//     for (let i = pagesRequired; i > 0; i--) {
-//         apiPromises.push(fetch(swapiURL + "?page=" + i));
-//     }
-//
-//     console.log(apiPromises);
-//
-//     const processedResponses = [];
-//     return Promise.all(apiPromises)
-//         .then(responses => {
-//             console.log("responses:" + responses);
-//             responses.forEach(response => {
-//                 console.log("result: " + response);
-//                 processedResponses.push(response.json());
-//             });
-//             console.log("processed: " + processedResponses);
-//             return processedResponses;
-//         })
-// };
+    for (let i = 1; i < pagesRequired; i++) {
+        apiPromises.push(fetch(swapiURL + "?page=" + i));
+    }
+
+    return Promise.all(apiPromises)
+        .then(res => res.map(r => r.json()))
+        .then(res => Promise.all(res))
+        .then(res => res.map(r => r.results).flat());
+};
 
 function Home() {
     let [responseData, setResponseData] = React.useState([]);
 
     React.useEffect(() => {
         fetchData()
-            .then(data => {
-                setResponseData(data.results)
-            })
+            .then(data => setResponseData(data))
             .catch(error => console.log(error));
     }, []);
 
