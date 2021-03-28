@@ -29,6 +29,9 @@ For the color scheme I wanted to go with something Star Wars esque and really li
 [keycap set](https://geekhack.org/index.php?topic=108795.0). It has a nice black and yellow scheme with high contrast
 which is ideal for accessibility.
 
+Finally, I used ESLint with the AirBnB style standard to ensure I am adhering to a coding standard throughout my project,
+and also because every single coding project should use a linter.
+
 ## Trade-offs
 
 One trade-off I made was rendering all of the characters together instead of ten at a time. This allowed me to use the 
@@ -37,6 +40,9 @@ time of the home page.
 
 One thing I left out was using state to ensure consistency between navigation of a character page and the list page.
 
+Another trade-off is that because I used MaterialUI, I could not run react in strict mode, because `findDOMNode is deprecated in StrictMode`
+and MaterialUI relies on it.
+
 ## Future improvements
 
 One improvement I want to make is with the UI, its kind of ugly and I know I can do a much better job, particularly with
@@ -44,6 +50,10 @@ the character page.
 
 Next, I would also want to render other parts of the API such as the Films, Starships, Vehicles, Species, Planets, and link
 them to each other. Ie. Luke Skywalker should link to all his vehicles.
+
+Further, I have used ESLint and created one test for the application. However, I was fairly lax with how strictly I was 
+adhering to AirBnB's coding standard, and would want to reduce that in the future. As well, I would add more tests to this 
+project to help automate testing instead of doing it manually each time.
 
 Finally, I want to improve my routing, I currently use the `/character/:id` however I want to change that to `/name-of-character`. 
 
@@ -85,3 +95,11 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+`yarn lint-fix`
+
+Runs `eslint --fix` on all js and jsx files. Will automatically fix what linter issues it can and then return the results of the linter
+
+`yarn lint`
+
+Runs `eslint` on all js and jsx files. Will return the results of the linter.
