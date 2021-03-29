@@ -18,17 +18,14 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run a one-line script
-        run: echo Hello, world!
-
       - name: Install dependencies
         run: yarn install
-        
+
       - name: Run linter
         run: yarn lint
-        
+
       - name: Run tests
         run: yarn test
-      
+
       - name: Run build
         run: yarn build

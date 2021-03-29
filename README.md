@@ -4,20 +4,22 @@ This is a react application that interacts with [SWAPI](https://swapi.dev/), a S
 
 ## Description of Problem
 
-The requirements of this application is displaying a list of characters with their name, birth year, height,and mass. 
-The table can be navigated using next/prev buttons, and has an adjustment number of elements. Each item in the table
-is clickable and brings you to the character page.
+The requirements of this application involve displaying a list of characters with their name, birth year, height, and mass. 
+Each item in the table is clickable and brings you to the character page.
 
-The character page displays and the properties of the character and has a back button that brings you back to the list page.
+The character page displays the properties of the character and has a back button that brings you back to the list page.
 
 ## Description of solution and technical solution
 
 My solution starts with my App.js file. This file renders the navbar which is present for all pages, then uses a router 
-to render the different pages. My general architecture involves creating folders for each component to keep things loosely
-coupled. Within these folders are all the functions needed to create the component. 
+to render the different pages. My general architecture includes different folders for each of the various component, and 
+the files within each folder include all the necessary functions needed to create the component. I chose this design because 
+I want this solution to be very modular, loosely coupled between the different components but cohesive withing each folder,
+easily testable, and flexible enough to add components in the future.
 
 The home page first resolves all the promises from SWAPI, then renders the content via a MaterialUI table element. While
-the promise is pending, a loading icon will be displayed to the user.
+the promise is pending, a loading icon will be displayed to the user. The table can be navigated using next/prev buttons,
+and has an adjustment number of elements.
 
 The character page involves resolving a single promise based on the character then rendering the different properties of
 the character.
@@ -26,11 +28,16 @@ For this project I chose to use MaterialUI because it made creating the home pag
 using it.
 
 For the color scheme I wanted to go with something Star Wars esque and really liked the colour scheme of this
-[keycap set](https://geekhack.org/index.php?topic=108795.0). It has a nice black and yellow scheme with high contrast
-which is ideal for accessibility.
+[keycap set](https://geekhack.org/index.php?topic=108795.0). It has a nice black and yellow scheme, which fits the Star 
+Wars theme, but it also has high contrast which is ideal for accessibility.
 
-Finally, I used ESLint with the AirBnB style standard to ensure I am adhering to a coding standard throughout my project,
+Next, I used ESLint with the AirBnB style standard to ensure I am adhering to a coding standard throughout my project,
 and also because every single coding project should use a linter.
+
+I setup a CI pipeline using GitHub actions. This pipeline will run the linter, tests, and assemble a production build. If
+any of these fail the pipeline will fail.
+
+Finally, I chose to name this application Ewok, because Ewoks are adorable and so is this application.
 
 ## Trade-offs
 
@@ -53,7 +60,7 @@ them to each other. Ie. Luke Skywalker should link to all his vehicles.
 
 Further, I have used ESLint and created one test for the application. However, I was fairly lax with how strictly I was 
 adhering to AirBnB's coding standard, and would want to reduce that in the future. As well, I would add more tests to this 
-project to help automate testing instead of doing it manually each time.
+project to help automate testing instead of testing components manually.
 
 Finally, I want to improve my routing, I currently use the `/character/:id` however I want to change that to `/name-of-character`. 
 
